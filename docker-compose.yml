@@ -1,0 +1,43 @@
+services:
+  app:
+    build:
+      dockerfile: ./infra/app/Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./src/app:/home/node/app/app
+      - ./src/server:/home/node/app/server
+
+  api:
+    build:
+      dockerfile: ./infra/api/Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./src/server:/home/node/app/server
+    ports:
+      - 3000:3000
+    command: npm run start
+
+  mongo:
+    build: 
+      dockerfile: ./infra/db/Dockerfile
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_DB_USER_NAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_DB_USER_PASSWORD}
+    ports:
+      - ${MONGO_DB_HOST_PORT}:${MONGO_DB_PORT}
+    volumes:
+      - ./infra/db/db:/data/db
+      - ./infra/db/configdb:/data/configdb
+
+  web:
+    build:
+      dockerfile: ./infra/web/Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - api
+      - app
+    volumes:
+      - ./src:/home/node/app
