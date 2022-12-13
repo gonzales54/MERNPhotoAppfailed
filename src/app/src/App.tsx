@@ -30,7 +30,8 @@ const App = (): JSX.Element => {
     }
     return (
       <form method='post' onSubmit={loginUser}>
-        <input type="text" name="userName" id="" className='userName'/>
+        <input type="text" name="userName" id="userName" className='userName'/>
+        <input type="password" name="passWord" id="passWord" className='passWord'/>
         <button type="submit" className='submitBtn'>Login</button>
       </form>
     )
