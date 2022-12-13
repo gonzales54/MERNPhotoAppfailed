@@ -1,9 +1,21 @@
-import { FormEvent } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { FormEvent, useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const App = (): JSX.Element => {
   const HomeView = (): JSX.Element => {
+    const navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState<any>([]);
+    useEffect(() => {
+      axios.get('/user')
+      .then((res: any) => {
+        if(res.data.data.length !== 0) {
+          setCurrentUser(currentUser);
+        } else {
+          navigate('/login');
+        }
+      })
+    }, []);
     return (
       <div>
         <h1>Home</h1>
