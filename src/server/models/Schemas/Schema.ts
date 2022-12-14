@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
 
 export const UserSchema = new Schema({
@@ -13,4 +14,12 @@ export const UserSchema = new Schema({
   }
 }, {
   versionKey: false
-});
+},);
+
+UserSchema.methods.getSignedJwtToken = (name: string) => {
+  return jwt.sign(
+    { id: name },
+    'my_secret',
+    { expiresIn: '1h' }
+  );
+}

@@ -5,15 +5,16 @@ import axios from 'axios';
 const App = (): JSX.Element => {
   const HomeView = (): JSX.Element => {
     const navigate = useNavigate();
+    const config = {
+      headers: {
+        Authroization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzEwMDEwMTAsImV4cCI6MTY3MTAwNDYxMH0.2GbwnPEdGPeLf5EkTvIf3ajGsmISqGz36L0cbtXvA8Y'
+      }
+    }
     const [currentUser, setCurrentUser] = useState<any>([]);
     useEffect(() => {
-      axios.get('/user')
+      axios.get('/user', config)
       .then((res: any) => {
-        if(res.data.data.length !== 0) {
-          setCurrentUser(currentUser);
-        } else {
-          navigate('/login');
-        }
+        console.log(res.data)
       })
     }, []);
     return (
@@ -23,6 +24,7 @@ const App = (): JSX.Element => {
     )
   }
   const LoginView = (): JSX.Element => {
+    const navigate = useNavigate();
     const loginUser = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const target = e.target as typeof  e.target & {
@@ -37,6 +39,11 @@ const App = (): JSX.Element => {
         params: {
           userName: target.userName.value,
           passWord: target.passWord.value
+        }
+      })
+      .then((res: any) => {
+        if(res.data.data !== '') {
+          navigate('/');
         }
       })
     }
