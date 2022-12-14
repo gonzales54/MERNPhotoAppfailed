@@ -1,6 +1,4 @@
 import express, {Application, Request, Response} from 'express';
-import { verifyToken } from './feature/authentication';
-import { getLoginUser } from './models/User';
 
 const app: Application = express();
 const AuthRouter = require('./router/AuthRouter');
