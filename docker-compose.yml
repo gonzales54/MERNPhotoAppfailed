@@ -4,6 +4,8 @@ services:
       dockerfile: ./infra/app/Dockerfile
     tty: true
     stdin_open: true
+    ports:
+      - 3001:3001
     volumes:
       - ./src/app:/home/node/app/app
       - ./src/server:/home/node/app/server

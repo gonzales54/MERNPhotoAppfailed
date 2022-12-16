@@ -4,23 +4,37 @@ import { getUser } from '../models/User';
 const app: Application = require('express');
 const router = express.Router();
 
-router.get('/register', async(req: Request, res: Response) => {
+declare module 'express-session' {
+  interface SessionData {
+    token: string | null
+  }
+}
+
+router.get('/register', async(req: Request, res: Response): Promise<void> => {
   res.status(200).send({
     data: 'Hello World'
   });
 });
 
-router.post('/login', async(req: Request, res: Response) => {
+router.post('/login', async(req: Request, res: Response): Promise<void> => {
   const { userName, passWord } = req.body.params;
-  const user = await getUser(userName);
-  const token = user?.getSignedJwtToken();
+  const user = await getUser(userName, passWord);
+  const token = user?.getSignedJwtToken(user);
 
-  console.log(token)
-  
+  req.session.token = token;
+
   res.status(200).send({
-    data: token
+    user: user,
+    data: 'Login Successfully'
   });
 });
+
+router.get('/logout', async(req: Request, res: Response): Promise<void> => {
+  req.session.token = null;
+  res.status(200).send({
+    data: 'Logout Successfully'
+  });
+})
 
 
 module.exports = router;
