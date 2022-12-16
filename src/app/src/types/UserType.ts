@@ -1,7 +1,6 @@
 export interface UserType {
   _id: number,
-  userName: string,
+  name: string,
   email: string,
   password: string,
-  getSignedJwtToken(user: UserType): string
 }

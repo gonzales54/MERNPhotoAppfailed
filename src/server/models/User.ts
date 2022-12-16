@@ -16,6 +16,6 @@ mongoose.connect(
 
 const User = mongoose.model('users', UserSchema);
 
-export const getUser = async(name: string): Promise<UserType|null> => {
-  return await User.findOne({name: name});
+export const getUser = async(name: string, password: string): Promise<UserType|null> => {
+  return await User.findOne({name: name, password: password});
 }

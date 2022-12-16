@@ -1,3 +1,5 @@
+import { UserType } from "../../types/UserType";
+
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
@@ -16,9 +18,9 @@ export const UserSchema = new Schema({
   versionKey: false
 },);
 
-UserSchema.methods.getSignedJwtToken = (name: string) => {
+UserSchema.methods.getSignedJwtToken = (user: UserType) => {
   return jwt.sign(
-    { id: name },
+    { user: user },
     'my_secret',
     { expiresIn: '1h' }
   );
