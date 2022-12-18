@@ -1,12 +1,12 @@
 import axios from "axios";
 import {  useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import UserPhoto from "../assets/profile.jpg";
 import PostPhoto from "../assets/nature.jpg"
 import NavigationMenu from "./parts/NavigationMenu";
 
-const HomeView = (): JSX.Element => {
+const Post = (): JSX.Element => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -38,12 +38,12 @@ const HomeView = (): JSX.Element => {
               </svg>
             </p>
           </div>
-          <Link to="/user/posts/46" className="">
+          <a href="" className="">
             <p className="mb-4 rounded-lg overflow-hidden">
               <img src={PostPhoto} alt="" className="rounded-lg"/>
             </p>       
             <p className="mb-4 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
-          </Link>
+          </a>
           <div className="mb-1 flex items-center">
               <p onClick={() => setIsLiked(!isLiked)}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke={isLiked ? "none" : "#EF4444"} className={isLiked ? "w-6 h-6 fill-red-500" : "w-6 h-6"}>
@@ -60,4 +60,4 @@ const HomeView = (): JSX.Element => {
   )
 }
 
-export default HomeView
+export default Post

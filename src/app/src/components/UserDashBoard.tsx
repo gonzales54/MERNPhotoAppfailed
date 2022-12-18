@@ -46,8 +46,8 @@ const UserDashBoard = () => {
           </a>
         </div>
         <div className="px-4 grid grid-cols-3 gap-2 overflow-y-scroll">
-          <a href="" className="block">
-            <div className="relative">
+          <div className="relative">
+            <Link to="/user/posts/46" className="block">
               <p className="rounded overflow-hidden">
                 <img src={PostPhoto1} alt="" className="h-[5rem] rounded" />
               </p>
@@ -59,10 +59,10 @@ const UserDashBoard = () => {
                 </p>
                 <p className="ml-1 text-sm text-white">269</p>
               </div>
-            </div>
-          </a>
-          <a href="" className="block">
-            <div className="relative">
+            </Link>
+          </div>
+          <div className="relative">
+            <Link to="/user/posts/46" className="block">
               <p className="rounded overflow-hidden">
                 <img src={PostPhoto2} alt="" className="h-[5rem] rounded" />
               </p>
@@ -74,11 +74,11 @@ const UserDashBoard = () => {
                 </p>
                 <p className="ml-1 text-sm text-white">269</p>
               </div>
-            </div>
-          </a>
+            </Link>
+          </div>
         </div>
       </main>
-      <NavigationMenu />
+      <NavigationMenu user={'test'}/>
     </div>
   )
 }
