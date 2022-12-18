@@ -70,7 +70,7 @@ const CreatePost = (): JSX.Element => {
           </div>
         </form>
       </main>
-      <NavigationMenu/>
+      <NavigationMenu user={'test'}/>
     </div>
   )
 }

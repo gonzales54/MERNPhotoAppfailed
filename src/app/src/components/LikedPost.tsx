@@ -42,7 +42,7 @@ const LikedPost = (): JSX.Element => {
           </div>
         </a>
       </main>
-      <NavigationMenu/>
+      <NavigationMenu user={'test'}/>
     </div>
   )
 }

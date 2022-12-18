@@ -16,7 +16,7 @@ const Search = (): JSX.Element => {
           <input type="text" id="simple-search" className="w-full pl-10 p-2.5 block border border-gray-300 text-gray-900 text-sm bg-gray-50 rounded-lg focus:outline-none" placeholder="Search" required/>
         </div>
       </main>
-      <NavigationMenu/>
+      <NavigationMenu user={'test'}/>
     </div>
   )
 }
