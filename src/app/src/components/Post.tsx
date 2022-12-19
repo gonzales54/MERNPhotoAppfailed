@@ -1,6 +1,6 @@
 import axios from "axios";
 import {  useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import UserPhoto from "../assets/profile.jpg";
 import PostPhoto from "../assets/nature.jpg"
@@ -19,7 +19,12 @@ const Post = (): JSX.Element => {
 
   return (
     <div className="h-screen flex flex-col">
-      <header className="mb-4 px-4 py-4 shadow-md">
+      <header className="mb-4 px-4 py-3 flex items-center shadow-md">
+        <button onClick={() => navigate(-1)} type="button" className="mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
         <h1 className="font-medium">PhotoApp</h1>
       </header>
       <main className="px-4 grid sm:grid-cols-1 md:grid-cols-3 gap-4 overflow-y-scroll">
@@ -38,12 +43,15 @@ const Post = (): JSX.Element => {
               </svg>
             </p>
           </div>
-          <a href="" className="">
+          <Link to="/user/posts/46" className="">
             <p className="mb-4 rounded-lg overflow-hidden">
               <img src={PostPhoto} alt="" className="rounded-lg"/>
             </p>       
-            <p className="mb-4 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
-          </a>
+            <p className="mb-4 text-sm">
+              <span className="text-base font-semibold">test: </span>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            </p>
+          </Link>
           <div className="mb-1 flex items-center">
               <p onClick={() => setIsLiked(!isLiked)}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke={isLiked ? "none" : "#EF4444"} className={isLiked ? "w-6 h-6 fill-red-500" : "w-6 h-6"}>

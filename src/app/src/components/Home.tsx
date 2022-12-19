@@ -18,7 +18,7 @@ const HomeView = (): JSX.Element => {
   }
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-[#FDFDFD]">
       <header className="mb-4 px-4 py-4 shadow-md">
         <h1 className="font-medium">PhotoApp</h1>
       </header>
@@ -42,7 +42,10 @@ const HomeView = (): JSX.Element => {
             <p className="mb-4 rounded-lg overflow-hidden">
               <img src={PostPhoto} alt="" className="rounded-lg"/>
             </p>       
-            <p className="mb-4 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
+            <p className="mb-4 text-sm">
+              <span className="text-base font-semibold">test: </span>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            </p>
           </Link>
           <div className="mb-1 flex items-center">
               <p onClick={() => setIsLiked(!isLiked)}>

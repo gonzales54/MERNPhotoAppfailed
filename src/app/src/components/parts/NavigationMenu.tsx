@@ -1,9 +1,9 @@
 import { Link, useLocation, useParams } from 'react-router-dom'
 import UserPhoto from "../../assets/profile.jpg";
 
-const NavigationMenu = ({user} : {user: string}) => {
+const NavigationMenu = ({ user }: { user: string }) => {
   const location = useLocation();
-  
+
   interface svgType {
     '/': string,
     '/search': string,
@@ -25,17 +25,17 @@ const NavigationMenu = ({user} : {user: string}) => {
       {Object.keys(svgData).map((item: any, index: number) => {
         return (
           <li key={index}>
-          <Link to={item === '/dashboard' ? `/${user}${item}` : item} className={item === "/create" && location.pathname === '/create' ? "block rounded-sm outline outline-2" : item === "/create" ? "block rounded-sm outline outline-1" : ""}>
-            {item !== '/dashboard'
-              ?
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={location.pathname === item && location.pathname !== '/create' ? 2 : 1.5} stroke="currentColor" className="w-8 h-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d={Object.values(svgData)[index]} />
-              </svg>
-              :
-              <img src={Object.values(svgData)[index]} alt="" className={location.pathname === `/${user}/dashboard` ? "w-8 h-8 rounded-full object-cover outline outline-2" : "w-8 h-8 rounded-full object-cover"} />
-            }
-          </Link>
-        </li>
+            <Link to={item === '/dashboard' ? `/${user}${item}` : item} className={item === "/create" && location.pathname === '/create' ? "block rounded-sm outline outline-[3px]" : item === "/create" ? "block rounded-sm outline outline-2" : ""}>
+              {item !== '/dashboard'
+                ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={location.pathname === item && location.pathname !== '/create' ? 2 : 1.5} stroke="currentColor" className="w-8 h-8">
+                  <path strokeLinecap="round" strokeLinejoin="round" d={Object.values(svgData)[index]} />
+                </svg>
+                :
+                <img src={Object.values(svgData)[index]} alt="" className={location.pathname === `/${user}/dashboard` ? "w-8 h-8 rounded-full object-cover outline outline-2" : "w-8 h-8 rounded-full object-cover"} />
+              }
+            </Link>
+          </li>
         )
       })}
     </ul>
