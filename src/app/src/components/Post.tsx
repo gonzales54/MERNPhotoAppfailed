@@ -19,9 +19,9 @@ const Post = (): JSX.Element => {
 
   return (
     <div className="h-screen flex flex-col">
-      <header className="mb-4 px-4 py-3 flex items-center shadow-md">
+      <header className="mb-4 px-4 py-4 flex items-center shadow-md">
         <button onClick={() => navigate(-1)} type="button" className="mr-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
         </button>

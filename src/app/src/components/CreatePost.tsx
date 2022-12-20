@@ -60,7 +60,9 @@ const CreatePost = (): JSX.Element => {
             </button>
           </div>
           <div className="px-4 py-2 flex border-b-2">
-            <div className="w-14 h-14 mb-4 bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url(${preview})` }}></div>
+            <div className={fileName !== '' ? "w-14 h-14 mb-4 bg-no-repeat bg-center bg-cover" : "w-14 h-14 mb-4 bg-no-repeat bg-gray-500 text-white text-sm text-center leading-[56px]"} style={{ backgroundImage: `url(${preview})` }}>
+              {fileName !== '' ? "" : "No file"}
+            </div>
             <textarea name="caption" id="caption" cols={30} rows={3} className="px-3 focus:outline-none resize-none" placeholder="write a caption..."></textarea>
           </div>
           <div className={isLocationOpen ? "mb-2 px-4 pt-2 pb-4 flex flex-col border-b-2" : "mb-2 px-4 py-2 flex flex-col border-b-2"}>
@@ -80,13 +82,29 @@ const CreatePost = (): JSX.Element => {
               </p>
 
             </div>
-            <div className={isLocationOpen ? "bg-gray-50 flex items-center relative" : "hidden"}>
+            <div className={isLocationOpen ? "mb-6 bg-gray-50 flex items-center relative" : "hidden"}>
               <p className="absolute left-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-gray-500">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
               </p>
               <input type="search" name="addlocaiton" id="addlocation" className="w-full pl-8 pr-2 py-2 text-gray-900 rounded border border-1 border-gray-300 focus:outline-none" placeholder="add location" />
+            </div>
+            <div className={isLocationOpen ? "overflow-x-hidden overflow-y-scroll" : "hidden"}>
+              <div className="mb-4 flex items-center">
+                <p className="mr-2">
+                  <img src={UserPhoto} alt="" className="w-9 h-9 object-cover rounded-full"/>
+                </p>
+                <h4>test</h4>
+                <button type="button" className="ml-auto px-3 py-1 text-white text-sm bg-blue-500 rounded">Follow</button>
+              </div>
+              <div className="flex items-center">
+                <p className="mr-2">
+                  <img src={UserPhoto} alt="" className="w-9 h-9 object-cover rounded-full"/>
+                </p>
+                <h4>test</h4>
+                <button type="button" className="ml-auto px-3 py-1 text-white text-sm bg-blue-500 rounded">Follow</button>
+              </div>
             </div>
           </div>
         </form>
